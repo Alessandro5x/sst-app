@@ -5,12 +5,20 @@
 
 declare module "sst" {
   export interface Resource {
-    "MyService": {
-      "service": string
-      "type": "sst.aws.Service"
-      "url": string
+    "MyPostgres": {
+      "database": string
+      "host": string
+      "password": string
+      "port": number
+      "type": "sst.aws.Postgres"
+      "username": string
+    }
+    "MyTable": {
+      "name": string
+      "type": "sst.aws.Dynamo"
     }
     "MyVpc": {
+      "bastion": string
       "type": "sst.aws.Vpc"
     }
   }
