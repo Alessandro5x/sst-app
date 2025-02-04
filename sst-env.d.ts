@@ -5,6 +5,15 @@
 
 declare module "sst" {
   export interface Resource {
+    "MyApi": {
+      "type": "sst.aws.ApiGatewayV2"
+      "url": string
+    }
+    "MyApiFunction": {
+      "name": string
+      "type": "sst.aws.Function"
+      "url": string
+    }
     "MyPostgres": {
       "database": string
       "host": string

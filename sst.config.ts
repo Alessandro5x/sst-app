@@ -39,7 +39,6 @@ export default $config({
 
     // API Gateway V2
     const api = new sst.aws.ApiGatewayV2("MyApi", {
-      domain: "api.example.com",
       link: [rds]
     });
 
