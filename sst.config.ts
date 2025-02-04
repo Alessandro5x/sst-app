@@ -42,9 +42,9 @@ export default $config({
       link: [rds]
     });
 
-    api.route("GET /", "src/app.controller.getHandler");
-    api.route("POST /", "src/app.controller.postHandler");
-    api.route("POST /data", "src/app.controller.postDataHandler");
+    api.route("GET /", "src/lambda.getHandler");
+    api.route("POST /", "src/lambda.postHandler");
+    api.route("POST /data", "src/lambda.postDataHandler");    
 
     // Outputs
     return {
