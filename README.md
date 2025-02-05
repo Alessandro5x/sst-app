@@ -1,99 +1,188 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# SST Random API with DynamoDB and RDS
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## 🚀 Project Overview
+This project is a **Serverless Stack (SST)** application built with **NestJS** and deployed to AWS. It features a REST API with endpoints for generating random numbers, logging data to **DynamoDB**, and storing additional data in **PostgreSQL (RDS)**.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 📦 Features
+- **Generate Random Numbers:** `GET /` returns data from DynamoDB.
+- **Log Data to DynamoDB:** `POST /` stores data in DynamoDB.
+- **Store Data in RDS (PostgreSQL):** `POST /data` stores custom data in RDS.
+- **Serverless Architecture:** Deployed with SST and AWS Lambda.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Project setup
+## 🛠️ Technologies Used
+- **Framework:** Serverless Stack (SST) with NestJS
+- **Database:** AWS DynamoDB & Amazon RDS (PostgreSQL)
+- **Cloud Provider:** AWS
+- **Programming Language:** TypeScript (Node.js)
 
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Prerequisites
+- **Node.js** (v16 or higher)
+- **AWS CLI** configured
+- **SST CLI** installed globally:
+  ```bash
+  npm install -g sst
+  ```
+
+### 2️⃣ Clone the Repository
 ```bash
-$ npm install
+git clone <repository-url>
+cd sst-random-api
 ```
 
-## Compile and run the project
-
+### 3️⃣ Install Dependencies
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
-
+### 4️⃣ Deploy to AWS
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npx sst deploy
 ```
 
-## Deployment
+After deployment, SST will output the API endpoint URL.
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+---
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## 📡 API Endpoints
 
+### 1️⃣ **GET /**  
+**Description:** Fetch data from DynamoDB.
+
+**Request:**
 ```bash
-$ npm install -g mau
-$ mau deploy
+curl https://<api-endpoint>/
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+**Response:**
+```json
+{
+  "userId": "123",
+  "noteId": "note-1"
+}
+```
 
-## Resources
+---
 
-Check out a few resources that may come in handy when working with NestJS:
+### 2️⃣ **POST /**  
+**Description:** Log data to DynamoDB.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+**Request:**
+```bash
+curl -X POST https://<api-endpoint>/ \
+  -H "Content-Type: application/json" \
+  -d '{"userId": "test-user", "noteId": "note-1"}'
+```
 
-## Support
+**Response:**
+```json
+{
+  "message": "Item created"
+}
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
+### 3️⃣ **POST /data**  
+**Description:** Store custom data in RDS (PostgreSQL).
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+**Request:**
+```bash
+curl -X POST https://<api-endpoint>/data \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Sample", "value": "Data"}'
+```
 
-## License
+**Response:**
+```json
+{
+  "message": "Data stored in RDS successfully"
+}
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
+
+## 📊 Database Schema
+
+### 🗂️ **DynamoDB (MyTable)**
+- **Partition Key:** `userId` (string)
+- **Sort Key:** `noteId` (string)
+
+### 🗃️ **RDS (PostgreSQL)**
+Table: `data`
+- `id` (SERIAL PRIMARY KEY)
+- `name` (VARCHAR)
+- `value` (TEXT)
+
+---
+
+## ✅ Running Tests
+The project includes unit tests using **Jest**.
+
+### Run Tests
+```bash
+npx jest
+```
+
+---
+
+## 🚀 Local Development
+Run SST in local mode:
+```bash
+npx sst dev
+```
+
+---
+
+## 🗑️ Remove Deployment
+To remove the application from AWS:
+```bash
+npx sst remove
+```
+
+---
+
+## 📜 Environment Variables
+Ensure these variables are set during deployment (handled automatically by SST):
+
+```env
+TABLE_NAME=MyTable
+RDS_HOST=<RDS-Endpoint>
+RDS_PORT=5432
+RDS_USER=postgres
+RDS_PASSWORD=password
+RDS_DB=randomdb
+```
+
+---
+
+## 🚀 Deployment Details
+- **Deployed via:** SST (Serverless Stack)
+- **AWS Services Used:** Lambda, DynamoDB, RDS
+
+---
+
+## 👨‍💻 Contributing
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature-branch`)
+3. Commit your changes
+4. Push to the branch (`git push origin feature-branch`)
+5. Open a Pull Request
+
+---
+
+## 📞 Contact
+For questions or support, reach out via [GitHub Issues](https://github.com/your-repo/issues).
+
+---
+
+## 📃 License
+This project is licensed under the MIT License.
+
